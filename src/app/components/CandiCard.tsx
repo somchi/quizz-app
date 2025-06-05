@@ -1,8 +1,18 @@
 import React from "react";
 
-const CandiCard = ({ firstName, lastName, parish }: CandiCardProps) => {
+const CandiCard = ({
+  firstName,
+  lastName,
+  parish,
+  imageUrl,
+}: CandiCardProps) => {
   return (
     <div className="candi-card">
+      <img
+        src={imageUrl}
+        alt={`${firstName} ${lastName}`}
+        className="candi-card__image"
+      />
       <h2 className="candi-card__name">
         {firstName} {lastName}
       </h2>
