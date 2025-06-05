@@ -8,4 +8,5 @@ declare type CandiCardProps = {
   firstName: string;
   lastName: string;
   parish: string;
+  score?: number;
 };
