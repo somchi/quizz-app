@@ -1,5 +1,8 @@
-const AudiencePage=()=>{
-    return <div></div>
-}
+import WaitingCom from "@/app/components/WaitingCom";
+import Test from "@/app/components/Test";
 
-export default AudiencePage
+const AudiencePage = () => {
+  return <WaitingCom type="audience" children={<Test />} />;
+};
+
+export default AudiencePage;
