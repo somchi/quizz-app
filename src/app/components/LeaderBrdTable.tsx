@@ -12,26 +12,38 @@ import { participants } from "../lib/constants";
 
 const LeaderBrdTable = () => {
   return (
-    <Table>
-      <TableCaption>Leader Board</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Position</TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Score</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {participants.map((participant, index) => (
-          <TableRow key={participant.id}>
-            <TableCell className="font-medium">{participant.id}</TableCell>
-            <TableCell>{`${participant.firstName} ${participant.lastName}`}</TableCell>
-            <TableCell>{participant.score}</TableCell>
+    <div className="w-full max-w-4xl mx-auto px-4 py-8">
+      <Table className="w-full rounded-lg overflow-hidden shadow-md bg-card text-card-foreground border border-border">
+        <TableCaption className="text-lg font-semibold py-4 text-center">
+          <p className="text-sm text-muted-foreground mt-1">
+            Top participants based on their scores
+          </p>
+        </TableCaption>
+
+        <TableHeader className="bg-muted/40">
+          <TableRow>
+            <TableHead className="text-left">Position</TableHead>
+            <TableHead className="text-left">Name</TableHead>
+            <TableHead className="text-left">Score</TableHead>
           </TableRow>
-        ))}
-        {/* Map through the participants and display their scores */}
-      </TableBody>
-    </Table>
+        </TableHeader>
+
+        <TableBody>
+          {participants.map((participant, index) => (
+            <TableRow
+              key={participant.id}
+              className="hover:bg-muted/20 transition-colors"
+            >
+              <TableCell className="font-medium">{index + 1}</TableCell>
+              <TableCell>
+                {participant.firstName} {participant.lastName}
+              </TableCell>
+              <TableCell>{participant.score}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 
