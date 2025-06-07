@@ -6,9 +6,9 @@ import ParticipantsCom from "@/app/components/ParticipantsCom";
 const AudiencePage = () => {
   return (
     <section>
-      <WaitingCom type="roundToStart"  />
+      {/* <WaitingCom type="roundToStart"  /> */}
       {/* <LeaderBoard /> */}
-      {/* <ParticipantsCom /> */}
+      <ParticipantsCom />
     </section>
   );
 };
