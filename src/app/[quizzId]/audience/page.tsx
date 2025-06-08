@@ -7,9 +7,10 @@ import QuestionCom from "@/app/components/QuestionCom";
 const AudiencePage = () => {
   return (
     <section className="relative z-10">
+      {/* <WaitingCom type="roundToStart" /> */}
       {/* <LeaderBoard /> */}
-      {/* <QuestionCom /> */}
-      <ParticipantsCom />
+      <QuestionCom />
+      {/* <ParticipantsCom /> */}
     </section>
   );
 };

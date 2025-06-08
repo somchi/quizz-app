@@ -1,5 +1,5 @@
-declare type WaitComProps = {
-  type?: string;
+type WaitComProps = {
+  type?: 'quizToStart' | 'roundToStart' 
 };
 
 declare type CandiCardProps = {

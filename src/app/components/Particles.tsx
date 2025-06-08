@@ -23,9 +23,7 @@ const ParticlesBackground = ({ children }: Props) => {
     }).then(() => setInit(true));
   }, []);
 
-  const particlesLoaded = async (container?: Container) => {
-    console.log("Particles container:", container);
-  };
+  const particlesLoaded = async (container?: Container) => {};
 
   const options: ISourceOptions = useMemo(
     () => ({
