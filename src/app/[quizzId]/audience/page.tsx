@@ -6,7 +6,8 @@ import QuestionCom from "@/app/components/QuestionCom";
 
 const AudiencePage = () => {
   return (
-    <section className="">
+    <section className="relative z-10">
+      {/* <LeaderBoard /> */}
       {/* <QuestionCom /> */}
       <ParticipantsCom />
     </section>
