@@ -2,12 +2,12 @@ import WaitingCom from "@/app/components/WaitingCom";
 import Test from "@/app/components/Test";
 import LeaderBoard from "@/app/components/LeaderBoard";
 import ParticipantsCom from "@/app/components/ParticipantsCom";
+import QuestionCom from "@/app/components/QuestionCom";
 
 const AudiencePage = () => {
   return (
-    <section>
-      {/* <WaitingCom type="roundToStart"  /> */}
-      {/* <LeaderBoard /> */}
+    <section className="">
+      {/* <QuestionCom /> */}
       <ParticipantsCom />
     </section>
   );

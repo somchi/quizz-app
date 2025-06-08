@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import ParticipantsCom from "./ParticipantsCom";
 import CandidateCard from "./CandidateCard";
@@ -25,9 +26,11 @@ const WaitingCom = ({ type = "quizToStart" }: WaitComProps) => {
   const component = waitingComponentMap[type] || null;
 
   return (
-    <div className="h-screen px-4 text-center space-y-6">
-      <h1 className="text-3xl font-bold text-primary">{text}</h1>
-      {component}
+    <div className="relative h-screen overflow-hidden">
+      <div className="h-screen px-4 text-center space-y-6 relative z-10">
+        <h1 className="text-3xl font-bold text-primary">{text}</h1>
+        {component}
+      </div>
     </div>
   );
 };

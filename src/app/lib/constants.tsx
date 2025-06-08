@@ -5,7 +5,7 @@ export const participants = [
     lastName: "Doe",
     parish: "St. Peter's",
     score: 85,
-    imageUrl: "https://via.placeholder.com/150", // Placeholder image URL
+    imageUrl: "/images/victorafolabi.jpg",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const participants = [
     lastName: "Adams",
     parish: "Holy Trinity",
     score: 90,
-    imageUrl: "https://via.placeholder.com/150", // Placeholder image URL
+    imageUrl: "/images/victorafolabi.jpg",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const participants = [
     lastName: "Okafor",
     parish: "St. Joseph's",
     score: 78,
-    imageUrl: "https://via.placeholder.com/150", // Placeholder image URL
+    imageUrl: "/images/victorafolabi.jpg",
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const participants = [
     lastName: "Obi",
     parish: "Our Lady of Lourdes",
     score: 88,
-    imageUrl: "https://via.placeholder.com/150", // Placeholder image URL
+    imageUrl: "/images/victorafolabi.jpg",
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const participants = [
     lastName: "Ibrahim",
     parish: "Sacred Heart",
     score: 92,
-    imageUrl: "https://via.placeholder.com/150", // Placeholder image URL
+    imageUrl: "/images/victorafolabi.jpg",
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ export const participants = [
     lastName: "Bello",
     parish: "Christ the King",
     score: 85,
-    imageUrl: "https://via.placeholder.com/150", // Placeholder image URL
+    imageUrl: "/images/victorafolabi.jpg",
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ export const participants = [
     lastName: "Eze",
     parish: "St. Michael's",
     score: 80,
-    imageUrl: "https://via.placeholder.com/150", // Placeholder image URL
+    imageUrl: "/images/victorafolabi.jpg",
   },
   {
     id: 8,
@@ -61,6 +61,6 @@ export const participants = [
     lastName: "Nwankwo",
     parish: "St. Patrick's",
     score: 75,
-    imageUrl: "https://via.placeholder.com/150", // Placeholder image URL
+    imageUrl: "/images/victorafolabi.jpg",
   },
 ];
