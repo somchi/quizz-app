@@ -9,8 +9,8 @@ const AudiencePage = () => {
     <section className="relative z-10">
       {/* <WaitingCom type="roundToStart" /> */}
       {/* <LeaderBoard /> */}
-      <QuestionCom />
-      {/* <ParticipantsCom /> */}
+      {/* <QuestionCom /> */}
+      <ParticipantsCom />
     </section>
   );
 };

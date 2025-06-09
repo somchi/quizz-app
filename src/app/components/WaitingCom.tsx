@@ -16,7 +16,7 @@ const WaitingCom = ({ type = "quizToStart" }: WaitComProps) => {
         firstName="John"
         lastName="Doe"
         parish="St. Mary"
-        imageUrl="https://via.placeholder.com/150"
+        imageUrl="/images/victorafolabi.jpg"
         score={2}
       />
     ),

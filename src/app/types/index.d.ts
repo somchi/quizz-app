@@ -10,3 +10,11 @@ declare type CandiCardProps = {
   score?: number;
   imageUrl?: string;
 };
+
+declare type AnswerProps = {
+  question : string;
+  options: string;
+  selectedOption: string;
+   correctAnswer: string;
+   
+}
