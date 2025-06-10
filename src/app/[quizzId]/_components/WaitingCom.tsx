@@ -1,6 +1,7 @@
 import React from "react";
 import ParticipantsCom from "./ParticipantsCom";
 import CandidateCard from "./CandidateCard";
+import { WaitComProps } from "@/app/lib/types";
 
 const WaitingCom = ({ type = "quizToStart" }: WaitComProps) => {
   const waitingTextMap: Record<string, string> = {
@@ -16,6 +17,7 @@ const WaitingCom = ({ type = "quizToStart" }: WaitComProps) => {
         lastName="Doe"
         parish="St. Mary"
         imageUrl="https://via.placeholder.com/150"
+        
         score={2}
       />
     ),

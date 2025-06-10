@@ -7,8 +7,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "./ui/table";
-import { participants } from "../lib/constants";
+} from "../../components/ui/table";
+import { participants } from "../../lib/constants";
 
 const LeaderBrdTable = () => {
   return (

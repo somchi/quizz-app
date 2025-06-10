@@ -1,10 +1,8 @@
 import React from "react";
-import { participants } from "../lib/constants";
+import { participants } from "../../lib/constants";
 import CandidateCard from "./CandidateCard";
-import Colors from "@/settings/color";
 
 const ParticipantsCom = () => {
-  const { theme } = Colors;
 
   return (
     <div className="w-full min-h-screen bg-background px-4 py-8">

@@ -1,7 +1,8 @@
-import WaitingCom from "@/app/components/WaitingCom";
-import Test from "@/app/components/Test";
-import LeaderBoard from "@/app/components/LeaderBoard";
-import ParticipantsCom from "@/app/components/ParticipantsCom";
+
+import Test from "../_components/Test";
+import LeaderBoard from "../_components/LeaderBoard";
+import ParticipantsCom from "../_components/ParticipantsCom";
+import WaitingCom from "../_components/WaitingCom";
 
 const AudiencePage = () => {
   return (

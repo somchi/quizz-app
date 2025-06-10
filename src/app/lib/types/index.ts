@@ -1,8 +1,8 @@
-declare type WaitComProps = {
+export type WaitComProps = {
   type?: string;
 };
 
-declare type CandiCardProps = {
+export type CandiCardProps = {
   id?: number;
   firstName: string;
   lastName: string;
