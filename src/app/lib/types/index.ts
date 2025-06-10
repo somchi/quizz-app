@@ -1,5 +1,5 @@
 export type WaitComProps = {
-  type?: string;
+  type?: 'quizToStart' | 'roundToStart';
 };
 
 export type CandiCardProps = {
@@ -9,4 +9,11 @@ export type CandiCardProps = {
   parish: string;
   score?: number;
   imageUrl?: string;
+};
+
+export type AnswerProps = {
+  question: string;
+  options: { option: string }[];
+  selectedOption: string;
+  correctAnswer: string;
 };

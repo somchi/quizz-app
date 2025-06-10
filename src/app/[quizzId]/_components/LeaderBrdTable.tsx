@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Table,
   TableBody,
@@ -7,10 +7,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../components/ui/table";
-import { participants } from "../../lib/constants";
+} from '../../components/ui/table';
+import { participants } from '../../lib/constants';
 
-const LeaderBrdTable = () => {
+export const LeaderBrdTable = () => {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
       <Table className="w-full rounded-lg overflow-hidden shadow-md bg-card text-card-foreground border border-border">
@@ -24,6 +24,7 @@ const LeaderBrdTable = () => {
           <TableRow>
             <TableHead className="text-left">Position</TableHead>
             <TableHead className="text-left">Name</TableHead>
+            <TableHead className="text-left hidden md:block">Parish</TableHead>
             <TableHead className="text-left">Score</TableHead>
           </TableRow>
         </TableHeader>
@@ -32,11 +33,14 @@ const LeaderBrdTable = () => {
           {participants.map((participant, index) => (
             <TableRow
               key={participant.id}
-              className="hover:bg-muted/20 transition-colors"
+              className="hover:bg-muted/20 transition-colors cursor-pointer"
             >
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell>
                 {participant.firstName} {participant.lastName}
+              </TableCell>
+              <TableCell className="hidden md:block">
+                {participant.parish}
               </TableCell>
               <TableCell>{participant.score}</TableCell>
             </TableRow>
@@ -46,5 +50,3 @@ const LeaderBrdTable = () => {
     </div>
   );
 };
-
-export default LeaderBrdTable;
