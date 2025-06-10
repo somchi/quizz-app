@@ -1,5 +1,5 @@
-declare type WaitComProps = {
-  type?: string;
+type WaitComProps = {
+  type?: 'quizToStart' | 'roundToStart' 
 };
 
 declare type CandiCardProps = {
@@ -10,3 +10,11 @@ declare type CandiCardProps = {
   score?: number;
   imageUrl?: string;
 };
+
+declare type AnswerProps = {
+  question : string;
+  options: {option: string}[]
+  selectedOption: string;
+   correctAnswer: string;
+
+}
