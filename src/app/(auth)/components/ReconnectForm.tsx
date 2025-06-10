@@ -1,0 +1,39 @@
+'use client';
+
+import { ButtonLoader } from '@/app/components/ButtonLoader';
+import { Button } from '@/app/components/ui/button';
+import { Input } from '@/app/components/ui/input';
+import { Label } from '@/app/components/ui/label';
+import { reconnectParticipant } from '@/app/lib/server/participant';
+import { useActionState } from 'react';
+
+export const ReconnectForm = () => {
+  const [, action, pending] = useActionState(reconnectParticipant, undefined);
+
+  return (
+    <form action={action}>
+      <div className="grid gap-1 mb-[1.188rem] w-full">
+        <div className="mb-0 block">
+          <Label htmlFor="id" className="text-md">
+            Your Id
+          </Label>
+        </div>
+        <Input
+          id="id"
+          name="id"
+          placeholder="Enter your id"
+          className="w-full"
+        />
+      </div>
+      <div>
+        <Button
+          type="submit"
+          variant="primary"
+          className="w-40 bg-yellow-600 hover:bg-yellow-500"
+        >
+          {pending ? <ButtonLoader /> : 'Rejoin'}
+        </Button>
+      </div>
+    </form>
+  );
+};

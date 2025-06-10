@@ -1,5 +1,7 @@
-const AudiencePage=()=>{
-    return <div></div>
-}
+import { Audience } from '../_components/Audience';
 
-export default AudiencePage
+const AudiencePage = async () => {
+  return <Audience />;
+};
+
+export default AudiencePage;
