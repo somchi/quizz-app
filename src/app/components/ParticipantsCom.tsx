@@ -4,7 +4,7 @@ import CandidateCard from "./CandidateCard";
 
 const ParticipantsCom = () => {
   return (
-    <div className="w-full min-h-screen px-4 py-8">
+    <div className="w-full min-h-screen px-4 py-8 animate-in fade-in zoom-in duration-700">
       <div className="max-w-full mx-auto">
         <h1 className="text-3xl font-semibold text-card-foreground mb-6 text-center">
           Participants

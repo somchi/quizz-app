@@ -13,8 +13,8 @@ declare type CandiCardProps = {
 
 declare type AnswerProps = {
   question : string;
-  options: string;
+  options: {option: string}[]
   selectedOption: string;
    correctAnswer: string;
-   
+
 }

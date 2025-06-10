@@ -26,7 +26,7 @@ const WaitingCom = ({ type = "quizToStart" }: WaitComProps) => {
   const component = waitingComponentMap[type] || null;
 
   return (
-    <div className="relative h-screen overflow-y-auto">
+    <div className="relative h-screen overflow-y-auto animate-in fade-in zoom-in duration-700">
       <div className="h-screen px-4 text-center space-y-6 relative z-10">
         <h1 className="text-3xl font-bold text-primary">{text}</h1>
         {component}
