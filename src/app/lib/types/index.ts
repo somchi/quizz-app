@@ -17,3 +17,8 @@ export type AnswerProps = {
   selectedOption: string;
   correctAnswer: string;
 };
+
+export interface QuestionOption {
+  position: string;
+  text: string;
+}

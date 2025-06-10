@@ -4,7 +4,7 @@ import { ParticipantsCom } from './ParticipantsCom';
 import { CandidateCard } from './CandidateCard';
 import { WaitComProps } from '@/app/lib/types';
 
-const WaitingCom = ({ type = 'quizToStart' }: WaitComProps) => {
+export const WaitingCom = ({ type = 'quizToStart' }: WaitComProps) => {
   const waitingTextMap: Record<string, string> = {
     quizToStart: 'Quiz is about to start!',
     roundToStart: 'Round is about to start!',
@@ -35,5 +35,3 @@ const WaitingCom = ({ type = 'quizToStart' }: WaitComProps) => {
     </div>
   );
 };
-
-export default WaitingCom;

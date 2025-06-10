@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Button } from '../../components/ui/button';
 
-export const Question = () => {
+export const QuestionCom = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const options = ['A', 'B', 'C', 'D'];
 

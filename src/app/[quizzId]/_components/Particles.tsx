@@ -7,7 +7,6 @@ import {
   MoveDirection,
   OutMode,
   type ISourceOptions,
-  type Container,
 } from '@tsparticles/engine';
 
 type Props = {
@@ -23,7 +22,7 @@ export const ParticlesBackground = ({ children }: Props) => {
     }).then(() => setInit(true));
   }, []);
 
-  const particlesLoaded = async (container?: Container) => {};
+  const particlesLoaded = async () => {};
 
   const options: ISourceOptions = useMemo(
     () => ({

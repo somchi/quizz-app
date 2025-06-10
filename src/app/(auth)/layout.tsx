@@ -1,7 +1,8 @@
-export default function QuizLayout({
+export default function AuthLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+  modal: React.ReactNode;
+}) {
   return <div>{children}</div>;
 }

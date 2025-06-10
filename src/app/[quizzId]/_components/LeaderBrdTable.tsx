@@ -10,13 +10,13 @@ import {
 } from '../../components/ui/table';
 import { participants } from '../../lib/constants';
 
-export const LeaderBrdTable = () => {
+export const LeaderBoardTable = () => {
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
       <Table className="w-full rounded-lg overflow-hidden shadow-md bg-card text-card-foreground border border-border">
         <TableCaption className="text-lg font-semibold py-4 text-center">
           <p className="text-sm text-muted-foreground mt-1">
-            Top participants based on their scores
+            Participants based on their scores
           </p>
         </TableCaption>
 
