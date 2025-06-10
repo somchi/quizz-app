@@ -1,13 +1,15 @@
-import React from "react";
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardContent,
   CardDescription,
-} from "./ui/card";
+  CardHeader,
+  CardTitle,
+} from '@/app/components/ui/card';
+import { CandiCardProps } from '@/app/lib/types';
+import Image from 'next/image';
+import React from 'react';
 
-const CandidateCard = ({
+export const CandidateCard = ({
   firstName,
   lastName,
   parish,
@@ -17,10 +19,12 @@ const CandidateCard = ({
   return (
     <Card className="w-full max-w-sm mx-auto bg-card shadow-lg rounded-2xl overflow-hidden transition hover:shadow-2xl cursor-pointer">
       <CardHeader className="flex flex-col items-center gap-4 p-4">
-        <img
-          src={imageUrl}
+        <Image
+          src={imageUrl ?? '#'}
           alt={`${firstName} ${lastName}`}
           className="w-24 h-24 rounded-full object-cover border-4 border-white shadow"
+          width={150}
+          height={150}
         />
         <CardTitle className="text-center text-xl font-semibold text-secondary-foreground">
           <p>
@@ -38,5 +42,3 @@ const CandidateCard = ({
     </Card>
   );
 };
-
-export default CandidateCard;

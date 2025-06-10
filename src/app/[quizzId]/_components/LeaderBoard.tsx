@@ -1,11 +1,11 @@
-import React from "react";
-import LeaderBrdTable from "./LeaderBrdTable";
+import React from 'react';
+import { LeaderBoardTable } from './LeaderBrdTable';
 
-const LeaderBoard = () => {
+export const LeaderBoard = () => {
   return (
     <div className="max-w-5xl  mx-auto px-4 py-8 animate-in fade-in zoom-in duration-700">
       <div className="flex items-center justify-center gap-2 mb-6">
-        <h1 className="text-3xl font-bold text-theme-bg text-center">
+        <h1 className="text-3xl font-bold text-white text-center">
           Leaderboard
         </h1>
 
@@ -15,10 +15,8 @@ const LeaderBoard = () => {
       </div>
 
       <div className="bg-card text-card-foreground shadow-lg rounded-lg overflow-hidden">
-        <LeaderBrdTable />
+        <LeaderBoardTable />
       </div>
     </div>
   );
 };
-
-export default LeaderBoard;
