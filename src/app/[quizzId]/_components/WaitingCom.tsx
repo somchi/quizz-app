@@ -1,12 +1,13 @@
-"use client";
-import React from "react";
-import ParticipantsCom from "./ParticipantsCom";
-import CandidateCard from "./CandidateCard";
+'use client';
+import React from 'react';
+import { ParticipantsCom } from './ParticipantsCom';
+import { CandidateCard } from './CandidateCard';
+import { WaitComProps } from '@/app/lib/types';
 
-const WaitingCom = ({ type = "quizToStart" }: WaitComProps) => {
+export const WaitingCom = ({ type = 'quizToStart' }: WaitComProps) => {
   const waitingTextMap: Record<string, string> = {
-    quizToStart: "Quiz is about to start!",
-    roundToStart: "Round is about to start!",
+    quizToStart: 'Quiz is about to start!',
+    roundToStart: 'Round is about to start!',
   };
 
   const waitingComponentMap: Record<string, React.ReactNode> = {
@@ -22,7 +23,7 @@ const WaitingCom = ({ type = "quizToStart" }: WaitComProps) => {
     ),
   };
 
-  const text = waitingTextMap[type] || "Please wait...";
+  const text = waitingTextMap[type] || 'Please wait...';
   const component = waitingComponentMap[type] || null;
 
   return (
@@ -34,5 +35,3 @@ const WaitingCom = ({ type = "quizToStart" }: WaitComProps) => {
     </div>
   );
 };
-
-export default WaitingCom;

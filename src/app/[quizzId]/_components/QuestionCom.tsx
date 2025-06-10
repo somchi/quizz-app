@@ -1,10 +1,10 @@
-"use client";
-import { useState } from "react";
-import { Button } from "./ui/button";
+'use client';
+import { useState } from 'react';
+import { Button } from '../../components/ui/button';
 
-const Question = () => {
+export const QuestionCom = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const options = ["A", "B", "C", "D"];
+  const options = ['A', 'B', 'C', 'D'];
 
   const handleOptionClick = ({ option }: { option: string }) => {
     setSelectedOption(option);
@@ -36,14 +36,14 @@ const Question = () => {
               className={`flex items-center gap-1 rounded-md cursor-pointer border p-1 transition-colors
                 ${
                   selectedOption === option
-                    ? "bg-theme-lightBlue border-theme-blue"
-                    : "bg-white border-primary hover:bg-theme-lightBlue"
+                    ? 'bg-theme-lightBlue border-theme-blue'
+                    : 'bg-white border-primary hover:bg-theme-lightBlue'
                 }`}
             >
               <span
                 className={`grid place-content-center text-[0.6rem] w-5 h-5 md:w-6 md:h-6 md:text-[1rem] p-1 rounded-full font-bold select-none text-white
                   ${
-                    selectedOption === option ? "bg-theme-blue" : "bg-primary"
+                    selectedOption === option ? 'bg-theme-blue' : 'bg-primary'
                   }`}
               >
                 {option}
@@ -60,7 +60,7 @@ const Question = () => {
             onClick={handleSubmit}
             disabled={!selectedOption}
             className={`${
-              !selectedOption ? "opacity-50 cursor-not-allowed" : ""
+              !selectedOption ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
             Submit
@@ -70,5 +70,3 @@ const Question = () => {
     </div>
   );
 };
-
-export default Question;

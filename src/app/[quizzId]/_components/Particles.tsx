@@ -1,20 +1,19 @@
 // src/components/ParticlesBackground.tsx
-"use client";
-import { ReactNode, useEffect, useMemo, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
+'use client';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 import {
   MoveDirection,
   OutMode,
   type ISourceOptions,
-  type Container,
-} from "@tsparticles/engine";
+} from '@tsparticles/engine';
 
 type Props = {
   children: ReactNode;
 };
 
-const ParticlesBackground = ({ children }: Props) => {
+export const ParticlesBackground = ({ children }: Props) => {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -23,18 +22,18 @@ const ParticlesBackground = ({ children }: Props) => {
     }).then(() => setInit(true));
   }, []);
 
-  const particlesLoaded = async (container?: Container) => {};
+  const particlesLoaded = async () => {};
 
   const options: ISourceOptions = useMemo(
     () => ({
       background: {
-        color: { value: "#0d47a1" }, // deep blue
+        color: { value: '#0d47a1' }, // deep blue
       },
       fpsLimit: 120,
       interactivity: {
         events: {
-          onClick: { enable: true, mode: "push" },
-          onHover: { enable: true, mode: "repulse" },
+          onClick: { enable: true, mode: 'push' },
+          onHover: { enable: true, mode: 'repulse' },
         },
         modes: {
           push: { quantity: 4 },
@@ -42,9 +41,9 @@ const ParticlesBackground = ({ children }: Props) => {
         },
       },
       particles: {
-        color: { value: "#ffffff" },
+        color: { value: '#ffffff' },
         links: {
-          color: "#ffffff",
+          color: '#ffffff',
           distance: 150,
           enable: true,
           opacity: 0.5,
@@ -61,7 +60,7 @@ const ParticlesBackground = ({ children }: Props) => {
           value: 80,
         },
         opacity: { value: 0.5 },
-        shape: { type: "circle" },
+        shape: { type: 'circle' },
         size: { value: { min: 1, max: 5 } },
       },
       detectRetina: true,
@@ -77,12 +76,12 @@ const ParticlesBackground = ({ children }: Props) => {
           options={options}
           particlesLoaded={particlesLoaded}
           style={{
-            position: "absolute",
+            position: 'absolute',
             zIndex: 0,
             top: 0,
             left: 0,
-            width: "100%",
-            height: "100%",
+            width: '100%',
+            height: '100%',
           }}
         />
       )}
@@ -90,5 +89,3 @@ const ParticlesBackground = ({ children }: Props) => {
     </div>
   );
 };
-
-export default ParticlesBackground;
