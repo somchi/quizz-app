@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss';
 import Colors from './src/settings/color';
 import tailwindcssAnimate from 'tailwindcss-animate';
 
+
 export default  {
     darkMode: ['class'],
     content: [
