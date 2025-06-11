@@ -1,6 +1,6 @@
 import { SampleOptions } from '@/app/lib/constants';
 import { Question } from '../../_components/Question';
-import { Waiting } from '../../_components/Waiting';
+// import { Waiting } from '../../_components/Waiting';
 
 export const Participation = () => {
   return (
