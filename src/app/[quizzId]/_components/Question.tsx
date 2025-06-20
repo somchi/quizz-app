@@ -8,23 +8,23 @@ import {
 } from '@/app/components/ui/card';
 import { Timer } from './Timer';
 import { useState } from 'react';
-import { QuestionOption } from '@/app/lib/types';
 import { Option } from '../participant/components/Options';
+import { socket } from '@/app/lib/client';
+import { EVENT_STATE } from '@/app/lib/enums';
 
 interface Props {
   data: {
     question: string;
     questionNumber: string;
     answer: string;
-    selected: string;
+    questionId: string;
   };
-  options: QuestionOption[];
+  options: string[];
   selectedAble: boolean;
 }
 export const Question = ({ data, options, selectedAble }: Props) => {
   const [canSelect, setCanSelect] = useState<boolean>(true);
   const [selected, setSelected] = useState<string>('');
-  const [answer] = useState<string>('a');
 
   const handleEndQuestion = () => {
     setCanSelect((canSelect) => !canSelect);
@@ -33,6 +33,11 @@ export const Question = ({ data, options, selectedAble }: Props) => {
   const handleSelect = (option: string) => {
     if (!selectedAble) return;
     setSelected(option);
+
+    socket.emit(EVENT_STATE.SUBMIT_ANSWER, {
+      questionId: data.questionId,
+      answer: option,
+    });
   };
 
   return (
@@ -53,8 +58,9 @@ export const Question = ({ data, options, selectedAble }: Props) => {
           <Option
             key={ind}
             option={item}
+            index={ind}
             selected={selected}
-            answer={answer}
+            answer={data.answer}
             canSelect={canSelect}
             onSelect={handleSelect}
           />

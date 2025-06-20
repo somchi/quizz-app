@@ -1,7 +1,7 @@
-// import { LeaderBoard } from '../_components/LeaderBoard';
-// import { ParticipantsCom } from '../_components/ParticipantsCom';
-// import { SampleOptions } from '@/app/lib/constants';
-// import { Question } from './Question';
+import { LeaderBoard } from '../_components/LeaderBoard';
+import { ParticipantsCom } from '../_components/ParticipantsCom';
+import { SampleOptions } from '@/app/lib/constants';
+import { Question } from './Question';
 import { Waiting } from './Waiting';
 
 export const Audience = () => {
