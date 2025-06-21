@@ -5,11 +5,15 @@ import { getSocket, socket } from '../lib/client';
 import { AppContext } from '../context';
 import { SET_SOCKET_PROPS, TOGGLE_RECONNECT } from '../context/reducer';
 import { getClientCookie } from '../lib/utils';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
-export function useSocketListener<T>(events: EventHandlers<T>) {
+export function useSocketListener<T>(
+  userType: string,
+  events: EventHandlers<T>
+) {
   const { state, dispatch } = useContext(AppContext);
   const router = useRouter();
+  const params = useParams<{ quizzId: string }>();
 
   function onConnect() {
     dispatch({
@@ -44,10 +48,12 @@ export function useSocketListener<T>(events: EventHandlers<T>) {
       return router.replace('/participant');
     }
     const socket = getSocket({
-      userType: 'participant',
-      quizCode: state.participant.quiz.code,
-      token: getClientCookie('token') ?? '',
+      userType,
+      quizCode:
+        userType === 'audience' ? params.quizzId : state.participant.quiz.code,
+      ...(userType !== 'audience' && { token: getClientCookie('token') ?? '' }),
     });
+
     if (socket.connected) {
       onConnect();
     }

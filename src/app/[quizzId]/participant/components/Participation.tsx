@@ -12,12 +12,12 @@ import { useRouter } from 'next/navigation';
 import {
   CLEAR_STATE,
   SET_ANSWER,
+  SET_CAN_SELECT,
   SET_PARTICIPANT_STATUS,
   SET_QUESTION,
   SET_QUESTION_NUMBER,
   SET_SOCKET_PROPS,
 } from '@/app/context/reducer';
-
 import { Answer } from '@/app/lib/types';
 
 export const Participation = () => {
@@ -43,7 +43,7 @@ export const Participation = () => {
     });
   };
 
-  const { onConnect } = useSocketListener({
+  const { onConnect } = useSocketListener('participant', {
     [EVENT_STATE.CONNECTED]: (data: { status: string; userType: string }) => {
       handleEvent(
         EVENT_STATE.CONNECTED,
@@ -73,6 +73,10 @@ export const Participation = () => {
         `Quiz ongoing, waiting for next question`
       );
       dispatch({ type: SET_ANSWER, payload: { answer: {} as Answer } });
+      dispatch({
+        type: SET_CAN_SELECT,
+        payload: { canSelect: false },
+      });
     },
     [EVENT_STATE.ROUND_STARTED]: (data: {
       roundId: string;
@@ -97,6 +101,10 @@ export const Participation = () => {
           },
         },
       });
+      dispatch({
+        type: SET_CAN_SELECT,
+        payload: { canSelect: true },
+      });
       dispatch({ type: SET_QUESTION, payload: { question: data } });
       dispatch({
         type: SET_QUESTION_NUMBER,
@@ -114,6 +122,22 @@ export const Participation = () => {
         },
       });
       dispatch({ type: SET_ANSWER, payload: { answer: data } });
+    },
+    [EVENT_STATE.TIME_UP]: () => {
+      toast.error('Time is up for this question', {
+        description: 'Please wait for the next question',
+        position: 'top-right',
+      });
+      dispatch({
+        type: SET_CAN_SELECT,
+        payload: { canSelect: false },
+      });
+    },
+    [EVENT_STATE.NEXT_ROUND]: () => {
+      handleEvent(
+        EVENT_STATE.NEXT_ROUND,
+        `Quiz ongoing, waiting for next round`
+      );
     },
   });
 

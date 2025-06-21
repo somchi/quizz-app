@@ -15,14 +15,23 @@ interface Props {
   children: React.ReactNode;
   title: string;
   description: string;
+  back: boolean;
 }
 
-export const Modal: React.FC<Props> = ({ children, title, description }) => {
+export const Modal: React.FC<Props> = ({
+  children,
+  title,
+  description,
+  back,
+}) => {
   const [show, setShow] = React.useState<boolean>(true);
   const router = useRouter();
+
   const handleClose = () => {
-    router.back();
     setShow(false);
+    if (back) {
+      router.back();
+    }
   };
   return (
     <Dialog open={show} onOpenChange={handleClose}>

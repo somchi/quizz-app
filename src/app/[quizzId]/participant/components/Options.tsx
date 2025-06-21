@@ -2,7 +2,7 @@ import { numberToLetter } from '@/app/lib/utils';
 
 interface Props {
   selected: string;
-  answer: string;
+  answer: number;
   option: string;
   canSelect: boolean;
   index: number;
@@ -24,7 +24,7 @@ export const Option = ({
           ? 'border-4 border-yellow-400'
           : 'border-gray-300'
       } rounded-md w-full ${
-        answer === option && !canSelect
+        answer === index
           ? 'bg-theme-secondary animate-pulse transition-colors duration-500 ease-in-out'
           : 'bg-transparent'
       }`}

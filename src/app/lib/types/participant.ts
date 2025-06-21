@@ -13,6 +13,10 @@ export interface Participant {
   id: string;
   name: string;
   code: string;
+  parish: string;
+  totalPoints: number;
+  correctAnswers: number;
+  imageUrl?: string;
   metadata: {
     parish: string;
   };

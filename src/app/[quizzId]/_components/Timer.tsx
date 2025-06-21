@@ -1,24 +1,29 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { AppContext } from '@/app/context';
+import React, { useState, useEffect, useContext } from 'react';
 
 interface CountdownTimerProps {
   initialSeconds?: number;
   onTimerEnd?: () => void;
+  shouldCount: boolean;
 }
 
 export const Timer: React.FC<CountdownTimerProps> = ({
   initialSeconds = 15,
   onTimerEnd,
+  shouldCount,
 }) => {
   const [timeLeft, setTimeLeft] = useState(initialSeconds);
   const [timerRunning, setTimerRunning] = useState(true);
+  const { state } = useContext(AppContext);
 
   useEffect(() => {
-    if (!timerRunning || timeLeft <= 0) {
+    if (!timerRunning || timeLeft <= 0 || (!state.canSelect && shouldCount)) {
       if (timeLeft === 0 && timerRunning) {
         onTimerEnd?.();
         setTimerRunning(false);
+        setTimeLeft(0);
       }
       return; // Stop the interval if timer is not running or already at 0
     }
@@ -28,7 +33,7 @@ export const Timer: React.FC<CountdownTimerProps> = ({
     }, 1000);
 
     return () => clearInterval(timerId);
-  }, [timeLeft, timerRunning, onTimerEnd]);
+  }, [timeLeft, timerRunning, onTimerEnd, state.canSelect, shouldCount]);
 
   const displayTime = timeLeft > 0 ? timeLeft : 0;
 

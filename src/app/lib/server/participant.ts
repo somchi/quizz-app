@@ -7,6 +7,29 @@ import { ParticipantAuthSchema } from '../schema/participant';
 import { getAllFormFields } from '../utils';
 import { cookies } from 'next/headers';
 
+const handleCookie = async (setCookie: string) => {
+  const [cookiePair, ...options] = setCookie.split(';');
+  const [cookieName, cookieValue] = cookiePair.split('=');
+
+  let expiresOption: Date | undefined = undefined;
+  const expiresString = options.find((opt) =>
+    opt.trim().toLowerCase().startsWith('expires=')
+  );
+
+  if (expiresString) {
+    const dateStr = expiresString.split('=')[1]?.trim();
+    if (dateStr) expiresOption = new Date(dateStr);
+  }
+
+  (await cookies()).set(cookieName.trim(), cookieValue.trim(), {
+    path: '/',
+    httpOnly: setCookie.toLowerCase().includes('httponly'),
+    secure: setCookie.toLowerCase().includes('secure'),
+    expires: expiresOption,
+    sameSite: 'strict',
+  });
+};
+
 const registerParticipant = async (payload: ParticipantAuth) => {
   try {
     const response = await fetch(
@@ -26,26 +49,7 @@ const registerParticipant = async (payload: ParticipantAuth) => {
     if (response.status <= 201) {
       const setCookie = response.headers.get('set-cookie');
       if (response.status <= 201 && setCookie) {
-        const [cookiePair, ...options] = setCookie.split(';');
-        const [cookieName, cookieValue] = cookiePair.split('=');
-
-        let expiresOption: Date | undefined = undefined;
-        const expiresString = options.find((opt) =>
-          opt.trim().toLowerCase().startsWith('expires=')
-        );
-
-        if (expiresString) {
-          const dateStr = expiresString.split('=')[1]?.trim();
-          if (dateStr) expiresOption = new Date(dateStr);
-        }
-
-        (await cookies()).set(cookieName.trim(), cookieValue.trim(), {
-          path: '/',
-          httpOnly: setCookie.toLowerCase().includes('httponly'),
-          secure: setCookie.toLowerCase().includes('secure'),
-          expires: expiresOption,
-          sameSite: 'strict',
-        });
+        handleCookie(setCookie);
       }
 
       return { status: 201, data };
@@ -118,6 +122,11 @@ export const reconnectParticipant = async (
     const data = await response.json();
 
     if (response.status <= 201) {
+      const setCookie = response.headers.get('set-cookie');
+      if (response.status <= 201 && setCookie) {
+        handleCookie(setCookie);
+      }
+
       (await cookies()).set('token', data.token, {
         httpOnly: false,
         secure: true,

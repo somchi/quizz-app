@@ -5,6 +5,7 @@ import { Button } from '@/app/components/ui/button';
 import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
 import { AppContext } from '@/app/context';
+import { SET_PARTICIPANT } from '@/app/context/reducer';
 import { reconnectParticipant } from '@/app/lib/server/participant';
 import { ActionResponse } from '@/app/lib/types';
 import { Participant } from '@/app/lib/types/participant';
@@ -29,9 +30,10 @@ export const ReconnectForm = () => {
           position: 'top-right',
         });
         dispatch({
-          type: 'SET_PARTICIPANT',
+          type: SET_PARTICIPANT,
           payload: { participant: state.data as Participant },
         });
+
         router.replace(`${state.data?.quiz.id}/participant`);
       } else {
         toast.error('Error reconnected you', {
@@ -40,7 +42,7 @@ export const ReconnectForm = () => {
         });
       }
     }
-  }, [router, state]);
+  }, [dispatch, router, state]);
 
   return (
     <form action={action}>

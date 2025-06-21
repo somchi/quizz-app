@@ -12,6 +12,7 @@ import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { Participant } from '@/app/lib/types/participant';
 import { AppContext } from '@/app/context';
+import { SET_PARTICIPANT } from '@/app/context/reducer';
 
 export const ConnectForm = () => {
   const { dispatch } = useContext(AppContext);
@@ -29,7 +30,7 @@ export const ConnectForm = () => {
           position: 'top-right',
         });
         dispatch({
-          type: 'SET_PARTICIPANT',
+          type: SET_PARTICIPANT,
           payload: { participant: state.data as Participant },
         });
         router.replace(`${state.data?.quiz.id}/participant`);

@@ -4,7 +4,7 @@ import { io, Socket } from 'socket.io-client';
 export let socket: Socket;
 
 export const getSocket = (auth: {
-  token: string;
+  token?: string;
   userType: string;
   quizCode: string;
 }): Socket => {

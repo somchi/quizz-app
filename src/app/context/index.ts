@@ -10,6 +10,9 @@ export const INITIAL_STATE: AppStore = {
   socketProps: { isConnected: false, transport: 'N/A' },
   participant: {} as Participant,
   reconnect: false,
+  canSelect: false,
+  audienceStatus: {} as ParticipantStatus,
+  participants: {},
 };
 
 export const AppContext = createContext<{

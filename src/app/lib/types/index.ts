@@ -72,7 +72,19 @@ export interface QuestionShow extends Question {
 
 export interface Answer {
   questionId: string;
-  answer: string;
+  answer: number;
+  quizState: QuizState;
+  answers: {
+    participantId: string;
+    answer: number;
+    timeToAnswer: number;
+    isCorrect: boolean;
+    points: number;
+    name: string;
+    parish: string;
+    totalPoints: number;
+    correctAnswers: number;
+  }[];
 }
 
 export interface SocketProps {
@@ -87,10 +99,21 @@ export interface AppStore {
   socketProps: SocketProps;
   participant: Participant;
   reconnect: boolean;
+  canSelect: boolean;
+  audienceStatus: ParticipantStatus;
+  participants: { [participantId: string]: Participant };
 }
 
 export type Payload = Partial<AppStore>;
 export interface StoreAction {
   type: string;
   payload: Payload;
+}
+
+export interface QuizState {
+  currentRoundId: string | null;
+  state: string;
+  activeParticipants: {
+    [participantId: string]: Participant;
+  };
 }

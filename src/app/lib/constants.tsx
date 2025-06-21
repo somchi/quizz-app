@@ -90,3 +90,18 @@ export const ParticipantQuestionState = [
   EVENT_STATE.QUESTION_SHOW,
   EVENT_STATE.ANSWERED_REVEALED,
 ];
+
+export const AudienceQuestionState = [
+  EVENT_STATE.QUESTION_SHOW,
+  EVENT_STATE.ANSWERED_REVEALED,
+];
+
+export const AudienceWaitStatus = [
+  EVENT_STATE.CONNECTED,
+  EVENT_STATE.ROUND_STARTED,
+];
+
+export const QuizParticipants = [
+  EVENT_STATE.QUIZ_STARTED,
+  EVENT_STATE.NEXT_ROUND,
+];
