@@ -1,14 +1,47 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useContext, useEffect } from 'react';
 import { ButtonLoader } from '@/app/components/ButtonLoader';
 import { Button } from '@/app/components/ui/button';
 import { Input } from '@/app/components/ui/input';
 import { connectParticipant } from '@/app/lib/server/participant';
 import { Label } from '@/app/components/ui/label';
+import { ActionResponse } from '@/app/lib/types';
+
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+import { Participant } from '@/app/lib/types/participant';
+import { AppContext } from '@/app/context';
+import { SET_PARTICIPANT } from '@/app/context/reducer';
 
 export const ConnectForm = () => {
-  const [, action, pending] = useActionState(connectParticipant, undefined);
+  const { dispatch } = useContext(AppContext);
+  const [state, action, pending] = useActionState(
+    connectParticipant,
+    {} as ActionResponse<Participant>
+  );
+  const router = useRouter();
+
+  useEffect(() => {
+    if (state) {
+      if (state.status <= 201) {
+        toast.success('Successfully added you', {
+          description: state.message,
+          position: 'top-right',
+        });
+        dispatch({
+          type: SET_PARTICIPANT,
+          payload: { participant: state.data as Participant },
+        });
+        router.replace(`${state.data?.quiz.id}/participant`);
+      } else {
+        toast.error('Error adding you', {
+          description: state.message,
+          position: 'top-right',
+        });
+      }
+    }
+  }, [dispatch, router, state]);
 
   return (
     <form action={action}>
@@ -19,9 +52,9 @@ export const ConnectForm = () => {
           </Label>
         </div>
         <Input
-          id="id"
-          name="id"
-          placeholder="Enter quiz id"
+          id="quizCode"
+          name="quizCode"
+          placeholder="Enter quiz code"
           className="w-full"
         />
       </div>
