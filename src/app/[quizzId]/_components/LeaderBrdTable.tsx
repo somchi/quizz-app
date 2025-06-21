@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Table,
   TableBody,
@@ -8,9 +8,10 @@ import {
   TableHeader,
   TableRow,
 } from '../../components/ui/table';
-import { participants } from '../../lib/constants';
+import { AppContext } from '@/app/context';
 
 export const LeaderBoardTable = () => {
+  const { state } = useContext(AppContext);
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
       <Table className="w-full rounded-lg overflow-hidden shadow-md bg-card text-card-foreground border border-border">
@@ -30,21 +31,21 @@ export const LeaderBoardTable = () => {
         </TableHeader>
 
         <TableBody>
-          {participants.map((participant, index) => (
-            <TableRow
-              key={participant.id}
-              className="hover:bg-muted/20 transition-colors cursor-pointer"
-            >
-              <TableCell className="font-medium">{index + 1}</TableCell>
-              <TableCell>
-                {participant.firstName} {participant.lastName}
-              </TableCell>
-              <TableCell className="hidden md:block">
-                {participant.parish}
-              </TableCell>
-              <TableCell>{participant.score}</TableCell>
-            </TableRow>
-          ))}
+          {Object.values(state.participants)
+            .sort((a, b) => b.totalPoints - a.totalPoints)
+            .map((participant, index) => (
+              <TableRow
+                key={index}
+                className="hover:bg-muted/20 transition-colors cursor-pointer"
+              >
+                <TableCell className="font-medium">{index + 1}</TableCell>
+                <TableCell>{participant.name}</TableCell>
+                <TableCell className="hidden md:block">
+                  {participant.parish}
+                </TableCell>
+                <TableCell>{participant.totalPoints}</TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </div>

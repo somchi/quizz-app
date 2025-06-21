@@ -1,10 +1,11 @@
-import { QuestionOption } from '@/app/lib/types';
+import { numberToLetter } from '@/app/lib/utils';
 
 interface Props {
   selected: string;
-  answer: string;
-  option: QuestionOption;
+  answer: number;
+  option: string;
   canSelect: boolean;
+  index: number;
   onSelect: (option: string) => void;
 }
 
@@ -14,25 +15,26 @@ export const Option = ({
   option,
   canSelect,
   onSelect,
+  index,
 }: Props) => {
   return (
     <button
       className={`flex gap-2 p-2 border ${
-        selected === option.position
+        selected === index.toString()
           ? 'border-4 border-yellow-400'
           : 'border-gray-300'
       } rounded-md w-full ${
-        answer === option.position && !canSelect
+        answer === index
           ? 'bg-theme-secondary animate-pulse transition-colors duration-500 ease-in-out'
           : 'bg-transparent'
       }`}
       disabled={!canSelect}
-      onClick={() => onSelect(option.position)}
+      onClick={() => onSelect(index.toString())}
     >
       <span className="text-sm font-bold uppercase text-white">
-        {option.position}.
+        {numberToLetter(index)}.
       </span>
-      <span className="text-sm text-start">{option.text}</span>
+      <span className="text-sm text-start">{option}</span>
     </button>
   );
 };

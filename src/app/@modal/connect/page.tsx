@@ -3,7 +3,11 @@ import { Modal } from '@/app/components/Modal';
 
 const StartAudience = () => {
   return (
-    <Modal title="Provide ID" description="Enter quiz Id to continue">
+    <Modal
+      title="Provide ID"
+      description="Enter quiz Id to continue"
+      back={false}
+    >
       <ConnectAudience />
     </Modal>
   );

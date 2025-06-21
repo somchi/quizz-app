@@ -1,20 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useContext } from 'react';
 import { ConnectForm } from './ConnectForm';
 import { ReconnectForm } from './ReconnectForm';
+import { AppContext } from '@/app/context';
 
 export const ConnectToQuiz = () => {
-  const [reconnect, setReconnect] = useState<boolean>(false);
+  const { state, dispatch } = useContext(AppContext);
 
   const handleClick = () => {
-    setReconnect((reconnect) => !reconnect);
+    dispatch({
+      type: 'TOGGLE_RECONNECT',
+      payload: { reconnect: !state.reconnect },
+    });
   };
   return (
     <div>
-      {reconnect ? <ReconnectForm /> : <ConnectForm />}
+      {state.reconnect ? <ReconnectForm /> : <ConnectForm />}
       <div onClick={handleClick}>
-        {reconnect ? (
+        {state.reconnect ? (
           <p>
             Haven&apos;t joined?{' '}
             <strong className="font-bold text-yellow-500 cursor-pointer">

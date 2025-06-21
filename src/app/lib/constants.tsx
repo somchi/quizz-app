@@ -1,3 +1,4 @@
+import { EVENT_STATE } from './enums';
 import { QuestionOption } from './types';
 
 export const participants = [
@@ -78,4 +79,29 @@ export const SampleOptions: QuestionOption[] = [
     position: 'd',
     text: "If you're using React, it's common practice to render modals using",
   },
+];
+
+export enum COOKIE_KEYS {
+  AccessToken = 'participant_token',
+  Token = 'token',
+}
+
+export const ParticipantQuestionState = [
+  EVENT_STATE.QUESTION_SHOW,
+  EVENT_STATE.ANSWERED_REVEALED,
+];
+
+export const AudienceQuestionState = [
+  EVENT_STATE.QUESTION_SHOW,
+  EVENT_STATE.ANSWERED_REVEALED,
+];
+
+export const AudienceWaitStatus = [
+  EVENT_STATE.CONNECTED,
+  EVENT_STATE.ROUND_STARTED,
+];
+
+export const QuizParticipants = [
+  EVENT_STATE.QUIZ_STARTED,
+  EVENT_STATE.NEXT_ROUND,
 ];
