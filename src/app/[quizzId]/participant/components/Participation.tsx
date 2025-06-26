@@ -112,6 +112,7 @@ export const Participation = () => {
       });
     },
     [EVENT_STATE.ANSWERED_REVEALED]: (data) => {
+      console.log('ANSWERED_REVEALED', data);
       dispatch({
         type: SET_PARTICIPANT_STATUS,
         payload: {
@@ -152,6 +153,7 @@ export const Participation = () => {
             questionNumber: state.questionNumber.toString(),
             answer: state.answer.answer,
             questionId: state.question.questionId,
+            explaination: state.answer.explaination,
           }}
           options={state.question.options}
           selectedAble={true}
