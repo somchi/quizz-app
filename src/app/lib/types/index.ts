@@ -74,6 +74,7 @@ export interface Answer {
   questionId: string;
   answer: number;
   quizState: QuizState;
+  explaination: string;
   answers: {
     participantId: string;
     answer: number;

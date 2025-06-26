@@ -20,6 +20,7 @@ interface Props {
     questionNumber: string;
     answer: number;
     questionId: string;
+    explaination: string;
   };
   options: string[];
   selectedAble: boolean;
@@ -72,6 +73,13 @@ export const Question = ({ data, options, selectedAble }: Props) => {
             onSelect={handleSelect}
           />
         ))}
+        {data.explaination && (
+          <div className="bg-white p-4 rounded-md shadow-md mt-4">
+            <p className="text-black font-semibold">
+              Explaination: {data.explaination}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
