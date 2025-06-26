@@ -29,6 +29,7 @@ export const AudienceQuestion = () => {
               questionNumber: state.questionNumber.toString(),
               answer: state.answer.answer,
               questionId: state.question.questionId,
+              explaination: state.answer.explaination,
             }}
             options={state.question.options}
             selectedAble={false}
